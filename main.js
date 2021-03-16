@@ -31,8 +31,8 @@ if (process.platform === 'win32') {
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 320,
+    height: 480,
     show: false,
     webPreferences: {
       nodeIntegration: true,
@@ -70,7 +70,7 @@ function createWindow() {
 
       installExtension(REACT_DEVELOPER_TOOLS)
         .catch(err => console.log('Error loading React DevTools: ', err))
-      mainWindow.webContents.openDevTools()
+      mainWindow.webContents.openDevTools({mode:'undocked'})
     }
   })
 

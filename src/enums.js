@@ -1,7 +1,5 @@
-import {Enum} from 'enumify';
+import {Enumify} from 'enumify';
 
-export class ActionType extends Enum {}
-
-ActionType.initEnum({
-    'SIMPLE_ACTION': {}
-})
+export class ActionType extends Enumify {
+    static SIMPLE_ACTION = new ActionType();
+}
