@@ -1,5 +1,9 @@
 import {Enumify} from 'enumify';
 
 export class ActionType extends Enumify {
-    static SIMPLE_ACTION = new ActionType();
+  static CONNECTED = new ActionType();
+  static DISCONNECTED = new ActionType();
+  static CONNECTION_FAILED = new ActionType();
+  static SIMPLE_ACTION = new ActionType();
+  static ECU_DATA_RCVD = new ActionType();
 }

@@ -22,20 +22,34 @@ const store = createStore(
 
 // connect to mqtt
 import { connect } from 'mqtt';
+import {connectionFailed, dataSrcConnected, ecuDataRcvd} from "../actions";
 
 const client = connect('mqtt://localhost:1883');
 client.on('connect', function() {
     client.subscribe('ecu', function(err) {
         if(!err) {
-            console.log("connect to mqtt broker")
+            store.dispatch(dataSrcConnected());
+          store.dispatch()
         } else {
-            console.log("could not connect to mqtt broker")
+            store.dispatch(connectionFailed());
         }
     })
 })
 
 client.on('message', function(topic, message) {
-    console.log(message.toString())
+  switch(topic) {
+    case 'ecu':
+      store.dispatch(ecuDataRcvd(message));
+      break
+    case 'tpms':
+      break
+    default:
+      break
+  }
+
+  if(topic === 'ecu') {
+      store.dispatch()
+    }
 })
 
 // Now we can render our application into it
