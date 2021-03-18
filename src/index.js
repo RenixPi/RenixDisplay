@@ -22,7 +22,7 @@ const store = createStore(
 
 // connect to mqtt
 import { connect } from 'mqtt';
-import {connectionFailed, dataSrcConnected, ecuDataRcvd} from "../actions";
+import {connectionFailed, dataSrcConnected, ecuDataRcvd} from "./actions";
 
 const client = connect('mqtt://localhost:1883');
 client.on('connect', function() {
