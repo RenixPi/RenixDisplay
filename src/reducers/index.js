@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import { ActionType } from '../enums';
+import { ecuReducer } from "./ecu";
+
 
 function simpleReducer(state=[], action) {
     switch(action.type) {
@@ -11,4 +13,5 @@ function simpleReducer(state=[], action) {
 
 export default combineReducers({
     simple: simpleReducer,
+    ecu: ecuReducer
 });

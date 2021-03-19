@@ -1,6 +1,8 @@
 import React from 'react';
-import { Attraction, Car } from 'grommet-icons';
-import {Grommet, Anchor, Box, Button, Text, Grid, Card} from 'grommet';
+import {Grommet,Box, Grid, Card} from 'grommet';
+import {RPMGauge} from "./rpm";
+
+
 
 // import '../assets/css/App.css'
 
@@ -22,7 +24,12 @@ function App() {
         ]}>
         <Box gridArea='header'>b</Box>
       <Box gridArea="UL">
-        <Card background="light-4" height="small">a</Card>
+        <Card background="light-4" height="small">
+          <RPMGauge/>
+
+
+
+        </Card>
       </Box>
         <Box gridArea="UR">
           <Card background="light-4" height="small">b</Card>
