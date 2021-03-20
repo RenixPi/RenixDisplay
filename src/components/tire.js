@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {Box, Meter, Stack, Text} from "grommet";
 import {RadialGauge, LinearGauge} from "react-canvas-gauges";
+import {amcred, amcblue, apple, iceberg, sunrise} from "../assets/colors";
 
 // https://coolors.co/0f3e84-c41209-79addc-adf7b6-ffd400
 // amc blue #0247af -> 0f3e84
@@ -27,9 +28,9 @@ export const TireGauge = ({pressure, temp}) => {
         title='psi'
         valueBox={false}
         highlights={[
-          {"from": 0, "to": 15, "color": "#00FF00"},
-          {"from": 30, "to": 50, "color": "#0000FF"},
-          {"from": 55, "to": 70, "color": "#FF0000"}
+          {"from": 0, "to": 15, "color": sunrise},
+          {"from": 30, "to": 50, "color": iceberg},
+          {"from": 55, "to": 70, "color": amcred}
 
           ]}
         minValue={0}
@@ -40,24 +41,28 @@ export const TireGauge = ({pressure, temp}) => {
       <div style={{marginTop:-40, marginLeft:5}}>
         <LinearGauge
           value={temp}
-          width={150}
+          width={145}
           height={75}
           minValue={-20}
           maxValue={80}
           majorTicks={[-20, 0, 20, 40, 60, 80]}
           highlights={[
-            {from: -20, to: 80, color: "#DDD"}
+            {from: -20, to: 60, color: "#DDD"},
+            {from: 60, to: 80, color: amcred }
+
           ]}
           minorTicks={5}
           barBeginCircle={false}
           tickSide={"left"}
           needleSide={"left"}
           numberSide={"left"}
+          needleType={"line"}
+          needleWidth={"3"}
+          barProgress={false}
           borders={false}
           borderShadowWidth={0}
-          colorBarProgress={"#F00"}
-          colorBar={"#0F0"}
           colorPlate={"#ddd"}
+          colorBar={"#ddd"}
           />
       </div>
 

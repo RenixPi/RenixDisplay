@@ -3,19 +3,23 @@
   src: url("../Poppins-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Digital";
+  src: url("../digital7mono.ttf") format("truetype");
+}
+
 * {
   font-family: Poppins;
 }
 
 .header {
-
-  .logo {
-    height:34px;
-    width:50px;
-    display: inline;
-  }
-
-  .appname {
-    display: inline;
-  }
+  font-size:24px;
+  margin-top:5px;
 }
+
+.clock div{
+  margin-top:3px;
+  font-family: Digital !important;
+  font-size:26px;
+}
+
