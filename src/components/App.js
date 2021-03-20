@@ -1,12 +1,19 @@
 import React from 'react';
-import {Grommet,Box, Grid, Card} from 'grommet';
-import {RPMGauge} from "./rpm";
+import {Grommet, Box, Grid, Card, Image} from 'grommet';
+import {TireGauge} from "./tire";
+import {useSelector} from "react-redux";
+import logo from "../assets/amcicon.png"
 
-
-
-// import '../assets/css/App.css'
+import '../assets/css/App.scss'
 
 function App() {
+
+  const lf = useSelector(state => state.tire.lf);
+  const rf = useSelector(state => state.tire.rf);
+  const lr = useSelector(state => state.tire.lr);
+  const rr = useSelector(state => state.tire.rr);
+
+
   return (
     <Grommet>
       <Grid
@@ -22,10 +29,21 @@ function App() {
           { name: 'LR', start: [1,2], end: [1,2] },
 
         ]}>
-        <Box gridArea='header'>b</Box>
+        <Box gridArea='header' className={"header"}>
+          <Grid
+            columns={['flex','flex']}
+
+            >
+            <Box><img className={"logo"} src={logo} width={50} height={34}/></Box>
+            <Box><h2 className={"appname"}>RenixPi</h2></Box>
+
+          </Grid>
+
+
+        </Box>
       <Box gridArea="UL">
         <Card background="light-4" height="small">
-          <RPMGauge/>
+          <TireGauge pressure={lf.pressure} temp={lf.temp}/>
 
 
 

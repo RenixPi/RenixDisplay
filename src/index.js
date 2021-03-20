@@ -11,18 +11,12 @@ let root = document.createElement('div')
 root.id = 'root'
 document.body.appendChild(root)
 
-import rootReducer from './reducers'
+import { store } from "./store";
 
-// create our redux store
-const initialState = {}
-const store = createStore(
-    rootReducer,
-    initialState
-)
 
 // connect to mqtt
 import { connect } from 'mqtt';
-import {connectionFailed, dataSrcConnected, ecuDataRcvd} from "./actions";
+import {connectionFailed, dataSrcConnected, ecuDataRcvd, tireDataRcvd} from "./actions";
 
 const client = connect('mqtt://localhost:1883');
 client.on('connect', function() {
@@ -42,15 +36,12 @@ client.on('message', function(topic, message) {
       store.dispatch(ecuDataRcvd(message));
       break
     case 'tpms':
+      store.dispatch(tireDataRcvd(message));
       break
     default:
       break
-  }
-
-  if(topic === 'ecu') {
-      store.dispatch()
-    }
-})
+  };
+});
 
 // Now we can render our application into it
 render(

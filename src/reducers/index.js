@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { ActionType } from '../enums';
 import { ecuReducer } from "./ecu";
+import {tireReducer} from "./tire";
 
 
 function simpleReducer(state=[], action) {
@@ -13,5 +14,6 @@ function simpleReducer(state=[], action) {
 
 export default combineReducers({
     simple: simpleReducer,
-    ecu: ecuReducer
+    ecu: ecuReducer,
+    tire: tireReducer
 });

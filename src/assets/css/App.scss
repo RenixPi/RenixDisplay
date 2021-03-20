@@ -1,3 +1,21 @@
-/* Main CSS file */
+@font-face {
+  font-family: "Poppins";
+  src: url("../Poppins-Regular.ttf") format("truetype");
+}
 
-@import '_example/_example.css';
+* {
+  font-family: Poppins;
+}
+
+.header {
+
+  .logo {
+    height:34px;
+    width:50px;
+    display: inline;
+  }
+
+  .appname {
+    display: inline;
+  }
+}
