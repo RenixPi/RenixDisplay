@@ -7,10 +7,10 @@ const initialState = {
     rpm: 0
   },
   tire:{
-    lf: { temp: 10, pressure: 0 },
-    rf: { temp: 10, pressure: 0 },
-    lr: { temp: 10, pressure: 0 },
-    rr: { temp: 10, pressure: 0 }
+    lf: { temp: 0, pressure: 0 },
+    rf: { temp: 0, pressure: 0 },
+    lr: { temp: 0, pressure: 0 },
+    rr: { temp: 0, pressure: 0 }
     }
 };
 

@@ -11,6 +11,7 @@ let mainWindow
 
 // Keep a reference for dev mode
 let dev = false
+let kiosk = true
 
 // Broken:
 // if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath)) {
@@ -19,6 +20,7 @@ let dev = false
 
 if (process.env.NODE_ENV !== undefined && process.env.NODE_ENV === 'development') {
   dev = true
+  kiosk = false
 }
 
 // Temporary fix broken high-dpi scale factor on Windows (125% scaling)
@@ -37,7 +39,10 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
-    }
+    },
+    resizable: false,
+    title:"RenixPi",
+    kiosk:kiosk
   })
 
   // and load the index.html of the app.

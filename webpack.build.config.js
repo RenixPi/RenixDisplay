@@ -10,6 +10,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' }],
+        include: defaultInclude
+      },
+      {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -35,9 +43,15 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    modules: [
+      path.resolve(__dirname + '/src'),
+      path.resolve(__dirname + '/node_modules')
+    ]
+  },
   target: 'electron-renderer',
   plugins: [
-    new HtmlWebpackPlugin({title: 'Comanche'}),
+    new HtmlWebpackPlugin({title: 'RenixPi'}),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional

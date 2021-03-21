@@ -6,6 +6,7 @@ import {RPMGauge} from "components/gauges/rpm";
 
 import 'assets/css/App.scss'
 import logo from "assets/amcicon.png"
+import {TempGauge, TYPES as TEMP_TYPES} from "./gauges/temp";
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
 
       <Box gridArea="UL">
         <Card background="light-4" height="small">
-          <TireGauge pressure={lf.pressure} temp={lf.temp}/>
+          <TireGauge pressure={43} temp={75}/>
         </Card>
       </Box>
         <Box gridArea="UR">
@@ -56,10 +57,16 @@ function App() {
           </Card>
         </Box>
         <Box gridArea="LL">
-          <Card background="light-4" height="small">c</Card>
+          <Card background="light-4" height="small">
+            <TempGauge temp={205} type={TEMP_TYPES.COOLANT}/>
+          </Card>
         </Box>
         <Box gridArea="LR">
-          <Card background="light-4" height="small">d</Card>
+          <Card background="light-4" height="small">
+            <Card background="light-4" height="small">
+              <TempGauge temp={60} type={TEMP_TYPES.AIRINTAKE}/>
+            </Card>
+          </Card>
         </Box>
 
       </Grid>
