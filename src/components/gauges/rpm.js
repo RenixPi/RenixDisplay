@@ -18,7 +18,10 @@ export const RPMGauge = ({speed}) => {
         borderShadowWidth={0}
         borders={false}
         title='rpm'
-        valueBox={false}
+        valueBox={true}
+        valueDec={0}
+        valueBoxWidth={75}
+        fontValueSize={40}
         highlights={[
           {"from": 5500, "to": 8000, "color": "#C41209"}
         ]}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {Box, Meter, Stack, Text} from "grommet";
 import {RadialGauge, LinearGauge} from "react-canvas-gauges";
-import {amcred, amcblue, apple, iceberg, sunrise} from "../assets/colors";
+import {amcred, amcblue, apple, iceberg, sunrise} from "assets/colors";
 
 // https://coolors.co/0f3e84-c41209-79addc-adf7b6-ffd400
 // amc blue #0247af -> 0f3e84

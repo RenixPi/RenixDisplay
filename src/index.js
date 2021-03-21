@@ -23,7 +23,6 @@ client.on('connect', function() {
     client.subscribe('ecu', function(err) {
         if(!err) {
             store.dispatch(dataSrcConnected());
-          store.dispatch()
         } else {
             store.dispatch(connectionFailed());
         }
@@ -31,16 +30,17 @@ client.on('connect', function() {
 })
 
 client.on('message', function(topic, message) {
+  const data = JSON.parse(message.toString());
   switch(topic) {
     case 'ecu':
-      store.dispatch(ecuDataRcvd(message));
+      store.dispatch(ecuDataRcvd(data));
       break
     case 'tpms':
-      store.dispatch(tireDataRcvd(message));
+      store.dispatch(tireDataRcvd(data));
       break
     default:
       break
-  };
+  }
 });
 
 // Now we can render our application into it

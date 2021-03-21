@@ -3,7 +3,9 @@ import {createStore} from "redux";
 import rootReducer from "./reducers";
 
 const initialState = {
-  ecu:{},
+  ecu:{
+    rpm: 0
+  },
   tire:{
     lf: { temp: 10, pressure: 0 },
     rf: { temp: 10, pressure: 0 },

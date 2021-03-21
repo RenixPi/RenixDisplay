@@ -1,11 +1,11 @@
 import React from 'react';
-import {Grommet, Box, Grid, Card, Image, Clock} from 'grommet';
-import {TireGauge} from "./tire";
 import {useSelector} from "react-redux";
-import logo from "../assets/amcicon.png"
+import {Grommet, Box, Grid, Card, Image, Clock} from 'grommet';
+import {TireGauge} from "components/gauges/tire";
+import {RPMGauge} from "components/gauges/rpm";
 
-import '../assets/css/App.scss'
-import {RPMGauge} from "./rpm";
+import 'assets/css/App.scss'
+import logo from "assets/amcicon.png"
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
   const rf = useSelector(state => state.tire.rf);
   const lr = useSelector(state => state.tire.lr);
   const rr = useSelector(state => state.tire.rr);
+  const rpm = useSelector(state => state.ecu.rpm);
 
 
   return (
@@ -51,7 +52,7 @@ function App() {
       </Box>
         <Box gridArea="UR">
           <Card background="light-4" height="small">
-            <RPMGauge speed={1250}/>
+            <RPMGauge speed={rpm}/>
           </Card>
         </Box>
         <Box gridArea="LL">
