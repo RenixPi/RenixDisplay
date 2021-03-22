@@ -17,9 +17,14 @@
   margin-top:5px;
 }
 
-.clock div{
-  margin-top:3px;
-  font-family: Digital !important;
-  font-size:26px;
+div.clock {
+  margin-top:0px;
+  margin-right:4px;
+
+  div {
+    font-family: Digital !important;
+    font-size: 26px;
+  }
+
 }
 
