@@ -5,6 +5,21 @@ const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 
+const toml = require('toml')
+const fs = require('fs')
+let config = null
+
+let height = 480
+let width = 320
+
+if(app.commandLine.hasSwitch('--config')) {
+  const fn = app.commandLine.getSwitchValue('--config')
+  config = toml.parse(fs.readFileSync(fn, 'utf-8'))
+  height = config.display.height
+  width = config.display.width
+}
+
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
