@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {Grommet, Box, Grid, Card, Image, Clock} from 'grommet';
+import {Grommet, Box, Grid, Card, Image, Clock, Stack} from 'grommet';
 import {TireGauge} from "components/gauges/tire";
 import {RPMGauge} from "components/gauges/rpm";
 
@@ -21,18 +21,19 @@ function App() {
     <Grommet>
       <Grid
         fill
-        columns={['auto', 'flex', 'flex', 'flex']}
-        rows={['30px','small', 'small',]}
+        columns={['flex', 'flex', 'flex', 'flex']}
+        rows={['30px','small', 'small','small']}
         gap='small'
         areas={[
           { name: 'logo', start: [0,0], end: [0,0]},
           { name: 'name', start: [1,0], end: [2,0]},
           { name: 'clock', start: [3,0], end: [3,0]},
-          { name: 'UL', start: [0,1], end: [2,1] },
-          { name: 'UR', start: [2,1], end: [3,1] },
-          { name: 'LL', start: [0,2], end: [2,2] },
-          { name: 'LR', start: [2,2], end: [3,2] },
-
+          { name: 'LF', start: [0,1], end: [2,1] },
+          { name: 'RF', start: [2,1], end: [3,1] },
+          { name: 'LR', start: [0,2], end: [2,2] },
+          { name: 'RR', start: [2,2], end: [3,2] },
+          { name: 'gauge1', start: [0,3], end:[2,3]},
+          { name: 'gauge2', start: [2,3], end:[3,3]}
         ]}>
 
         <Box gridArea='logo'><img src={logo} /></Box>
@@ -46,26 +47,52 @@ function App() {
         </Box>
 
 
-      <Box gridArea="UL">
+      <Box gridArea="LF">
         <Card background="light-4" height="small">
+          <Stack>
+          <p className={'gauge-title'}>Left<br/>Front</p>
           <TireGauge pressure={43} temp={75}/>
+          </Stack>
         </Card>
       </Box>
-        <Box gridArea="UR">
+      <Box gridArea="RF">
+        <Card background="light-4" height="small">
+          <Stack>
+            <p className={'gauge-title'}>Right<br/>Front</p>
+            <TireGauge pressure={46} temp={72}/>
+          </Stack>
+        </Card>
+      </Box>
+      <Box gridArea="LR">
+        <Card background="light-4" height="small">
+          <Stack>
+            <p className={'gauge-title'}>Left<br/>Rear</p>
+            <TireGauge pressure={41} temp={72}/>
+          </Stack>
+        </Card>
+      </Box>
+      <Box gridArea="RR">
+        <Card background="light-4" height="small">
+          <Stack>
+            <p className={'gauge-title'}>Right<br/>Rear</p>
+            <TireGauge pressure={45} temp={77}/>
+          </Stack>
+        </Card>
+      </Box>
+        <Box gridArea="gauge1">
           <Card background="light-4" height="small">
-            <RPMGauge speed={rpm}/>
+            <Stack>
+              <p className={'gauge-title'}>Coolant<br/>Temp</p>
+              <TempGauge temp={205} type={TEMP_TYPES.COOLANT}/>
+            </Stack>
           </Card>
         </Box>
-        <Box gridArea="LL">
+        <Box gridArea="gauge2">
           <Card background="light-4" height="small">
-            <TempGauge temp={205} type={TEMP_TYPES.COOLANT}/>
-          </Card>
-        </Box>
-        <Box gridArea="LR">
-          <Card background="light-4" height="small">
-            <Card background="light-4" height="small">
+            <Stack>
+              <p className={'gauge-title'}>Air Intake<br/>Temp</p>
               <TempGauge temp={60} type={TEMP_TYPES.AIRINTAKE}/>
-            </Card>
+            </Stack>
           </Card>
         </Box>
 

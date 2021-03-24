@@ -9,8 +9,8 @@ const toml = require('toml')
 const fs = require('fs')
 let config = null
 
-let height = 480
-let width = 320
+let height = 800
+let width = 480
 
 if(app.commandLine.hasSwitch('--config')) {
   const fn = app.commandLine.getSwitchValue('--config')
@@ -48,8 +48,8 @@ if (process.platform === 'win32') {
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 320,
-    height: 480,
+    height: height,
+    width: width,
     show: false,
     webPreferences: {
       nodeIntegration: true,
