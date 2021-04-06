@@ -59,7 +59,7 @@ export const TempGauge = ({temp, type}) => {
         valueBox={true}
         valueDec={0}
         valueInt={2}
-        valueText={temp + ' °F'}
+        valueText={temp.toFixed(1) + ' °F'}
         fontValueSize={40}
         {...options}
       />

@@ -13,21 +13,32 @@ document.body.appendChild(root)
 
 import { store } from "./store";
 
-
 // connect to mqtt
 import { connect } from 'mqtt';
 import {connectionFailed, dataSrcConnected, ecuDataRcvd, tireDataRcvd} from "./actions";
 
-const client = connect('mqtt://localhost:1883');
+const client = connect('mqtt://localhost:1883',{
+  'clientId': "renix_display",
+  'clean': false
+});
+
+const subscribe = (topic) => {
+  client.subscribe(topic, function(err) {
+    if(!err) {
+      store.dispatch(dataSrcConnected(topic));
+    } else {
+      store.dispatch(connectionFailed(topic, err));
+    }
+  })
+}
+
+
+
 client.on('connect', function() {
-    client.subscribe('ecu', function(err) {
-        if(!err) {
-            store.dispatch(dataSrcConnected());
-        } else {
-            store.dispatch(connectionFailed());
-        }
-    })
-})
+  console.log('connected');
+  subscribe('tpms');
+  subscribe('ecu');
+});
 
 client.on('message', function(topic, message) {
   const data = JSON.parse(message.toString());
@@ -39,6 +50,7 @@ client.on('message', function(topic, message) {
       store.dispatch(tireDataRcvd(data));
       break
     default:
+      console.log("unknown topic: " + topic)
       break
   }
 });

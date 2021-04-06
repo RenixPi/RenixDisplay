@@ -15,6 +15,8 @@ function App() {
   const lr = useSelector(state => state.tire.lr);
   const rr = useSelector(state => state.tire.rr);
   const rpm = useSelector(state => state.ecu.rpm);
+  const coolant = useSelector(state=> state.ecu.coolant);
+  const air_intake = useSelector(state => state.ecu.air_intake)
 
 
   return (
@@ -51,7 +53,7 @@ function App() {
         <Card background="light-4" height="small">
           <Stack>
           <p className={'gauge-title'}>Left<br/>Front</p>
-          <TireGauge pressure={43} temp={75}/>
+          <TireGauge pressure={lf.pressure} temp={lf.temp}/>
           </Stack>
         </Card>
       </Box>
@@ -59,7 +61,7 @@ function App() {
         <Card background="light-4" height="small">
           <Stack>
             <p className={'gauge-title'}>Right<br/>Front</p>
-            <TireGauge pressure={46} temp={72}/>
+            <TireGauge pressure={rf.pressure} temp={rf.temp}/>
           </Stack>
         </Card>
       </Box>
@@ -67,7 +69,7 @@ function App() {
         <Card background="light-4" height="small">
           <Stack>
             <p className={'gauge-title'}>Left<br/>Rear</p>
-            <TireGauge pressure={41} temp={72}/>
+            <TireGauge pressure={lr.pressure} temp={lr.temp}/>
           </Stack>
         </Card>
       </Box>
@@ -75,7 +77,7 @@ function App() {
         <Card background="light-4" height="small">
           <Stack>
             <p className={'gauge-title'}>Right<br/>Rear</p>
-            <TireGauge pressure={45} temp={77}/>
+            <TireGauge pressure={rr.pressure} temp={rr.temp}/>
           </Stack>
         </Card>
       </Box>
@@ -83,7 +85,7 @@ function App() {
           <Card background="light-4" height="small">
             <Stack>
               <p className={'gauge-title'}>Coolant<br/>Temp</p>
-              <TempGauge temp={205} type={TEMP_TYPES.COOLANT}/>
+              <TempGauge temp={coolant} type={TEMP_TYPES.COOLANT}/>
             </Stack>
           </Card>
         </Box>
@@ -91,7 +93,7 @@ function App() {
           <Card background="light-4" height="small">
             <Stack>
               <p className={'gauge-title'}>Air Intake<br/>Temp</p>
-              <TempGauge temp={60} type={TEMP_TYPES.AIRINTAKE}/>
+              <TempGauge temp={air_intake} type={TEMP_TYPES.AIRINTAKE}/>
             </Stack>
           </Card>
         </Box>
