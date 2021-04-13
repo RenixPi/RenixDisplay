@@ -5,7 +5,7 @@ import {TireGauge} from "components/gauges/tire";
 import {RPMGauge} from "components/gauges/rpm";
 
 import 'assets/css/App.scss'
-import logo from "assets/amcicon.png"
+import Logo from "assets/icons/amcicon.svg"
 import {TempGauge, TYPES as TEMP_TYPES} from "./gauges/temp";
 
 function App() {
@@ -38,7 +38,11 @@ function App() {
           { name: 'gauge2', start: [2,3], end:[3,3]}
         ]}>
 
-        <Box gridArea='logo'><img src={logo} /></Box>
+        <Box gridArea='logo'>
+          <div>
+            <Logo className={'logo'}/>
+          </div>
+        </Box>
         <Box gridArea='name'><p className={"header"}>RenixPi</p></Box>
         <Box gridArea='clock' className={'clock'}>
           <Clock

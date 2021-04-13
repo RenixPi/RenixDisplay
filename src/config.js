@@ -1,40 +1,28 @@
 import { readFileSync } from 'fs'
 import { parse as parseToml} from 'toml'
 
+const config = (() => {
 
-// should this be a separate object? an action to load into data store? part of the initial state?
-let config = null
-
-export const getConfig = () => {
-  if(!config) {
-    try {
-      config = parseToml(readFileSync("/etc/renix.toml", 'utf-8'))
-      console.log("SUCCESS: config file parsed")
-    } catch (e) {
-      console.log("ERROR: could not find toml file")
-    }
+  try {
+    const f = readFileSync("/etc/renix.toml", 'utf-8')
+    return parseToml(f)
+  } catch (e) {
+    console.log("ERROR: could not find toml or parse")
   }
-  return config
-}
+  return {}
 
-let tire_map = null
+})()
 
-export const getTireMap = () => {
+export default config
 
-  const cfg = getConfig()
-
-  if(!tire_map && 'tpms' in cfg) {
-    tire_map = {}
-    for (let pos in cfg.tpms) {
-      let id = cfg.tpms[pos]
+export const tire_map = (() => {
+  if('tpms' in config) {
+    const tire_map = {}
+    for (let pos in config.tpms) {
+      let id = config.tpms[pos]
       tire_map[id] = pos
     }
+    return tire_map
   }
-
-  return tire_map
-}
-
-console.log(tire_map)
-
-
-
+  return {}
+})()

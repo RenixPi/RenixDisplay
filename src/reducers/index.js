@@ -15,5 +15,8 @@ function simpleReducer(state=[], action) {
 export default combineReducers({
     simple: simpleReducer,
     ecu: ecuReducer,
-    tire: tireReducer
+    tire: tireReducer,
+    fuel: simpleReducer,
+    transmission: simpleReducer,
+    transfer_case: simpleReducer
 });
