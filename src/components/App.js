@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {Grommet, Box, Grid, Card, Image, Clock, Stack} from 'grommet';
+import {Grommet, Box, Grid, Card, Image, Clock, Stack, Text} from 'grommet';
 import {TireGauge} from "components/gauges/tire";
 import {RPMGauge} from "components/gauges/rpm";
 
@@ -27,8 +27,7 @@ function App() {
         rows={['30px','small', 'small','small']}
         gap='small'
         areas={[
-          { name: 'logo', start: [0,0], end: [0,0]},
-          { name: 'name', start: [1,0], end: [2,0]},
+          { name: 'logo', start: [0,0], end: [2,0]},
           { name: 'clock', start: [3,0], end: [3,0]},
           { name: 'LF', start: [0,1], end: [2,1] },
           { name: 'RF', start: [2,1], end: [3,1] },
@@ -39,16 +38,19 @@ function App() {
         ]}>
 
         <Box gridArea='logo'>
-          <div>
-            <Logo className={'logo'}/>
-          </div>
+          <Box direction="row" align="center" gap="xsmall" margin="xsmall">
+          <Logo className={'logo'}/>
+          <Text size="xxlarge">
+            RenixPi
+          </Text>
+          </Box>
         </Box>
-        <Box gridArea='name'><p className={"header"}>RenixPi</p></Box>
+        <Box gridArea='name'/>
         <Box gridArea='clock' className={'clock'}>
           <Clock
             type={'digital'}
             precision={'minutes'}
-            size={'xxlarge'}
+            size={'xlarge'}
           />
         </Box>
 
