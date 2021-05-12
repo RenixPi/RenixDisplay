@@ -12,16 +12,11 @@ let config = null
 let height = 480
 let width = 320
 
-console.log("cfg: " + process.env.RENIXCFG)
-console.log("mode: " + process.env.NODE_ENV)
-
 if(process.env.RENIXCFG !== undefined) {
-  console.log("reading renix config")
   const fn = process.env.RENIXCFG
   config = toml.parse(fs.readFileSync(fn, 'utf-8'))
   height = config.display.height
   width = config.display.width
-  console.log("height: " + height + " width: " + width)
 }
 
 
@@ -32,6 +27,7 @@ let mainWindow
 // Keep a reference for dev mode
 let dev = false
 let kiosk = true
+let fullscreen = true
 
 // Broken:
 // if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath)) {
@@ -41,6 +37,7 @@ let kiosk = true
 if (process.env.NODE_ENV !== undefined && process.env.NODE_ENV === 'development') {
   dev = true
   kiosk = false
+  fullscreen = false
 }
 
 // Temporary fix broken high-dpi scale factor on Windows (125% scaling)
@@ -62,7 +59,8 @@ function createWindow() {
     },
     resizable: true,
     title:"RenixPi",
-    fullscreen: true
+    kiosk: kiosk,
+    fullscreen: fullscreen
   })
 
   // and load the index.html of the app.
