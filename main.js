@@ -12,11 +12,16 @@ let config = null
 let height = 480
 let width = 320
 
+console.log("cfg: " + process.env.RENIXCFG)
+console.log("mode: " + process.env.NODE_ENV)
+
 if(process.env.RENIXCFG !== undefined) {
+  console.log("reading renix config")
   const fn = process.env.RENIXCFG
   config = toml.parse(fs.readFileSync(fn, 'utf-8'))
   height = config.display.height
   width = config.display.width
+  console.log("height: " + height + " width: " + width)
 }
 
 
@@ -55,9 +60,9 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false
     },
-    resizable: false,
+    resizable: true,
     title:"RenixPi",
-    kiosk:kiosk
+    fullscreen: true
   })
 
   // and load the index.html of the app.
