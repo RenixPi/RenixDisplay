@@ -9,11 +9,11 @@ const toml = require('toml')
 const fs = require('fs')
 let config = null
 
-let height = 800
-let width = 480
+let height = 480
+let width = 320
 
-if(app.commandLine.hasSwitch('--config')) {
-  const fn = app.commandLine.getSwitchValue('--config')
+if(process.env.RENIXCFG !== undefined) {
+  const fn = process.env.RENIXCFG
   config = toml.parse(fs.readFileSync(fn, 'utf-8'))
   height = config.display.height
   width = config.display.width
